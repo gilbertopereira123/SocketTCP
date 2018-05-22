@@ -8,6 +8,13 @@ import java.net.Socket;
 
 public class ServidorARQ{
 	public static void main(String[] args) {
+		
+		
+		String nomeArqu = null;
+		Scanner ler = new Scanner(System.in);
+		
+		System.out.println("digite o nome da imagem: ");
+		nomeArqu = ler.nextLine();
 
 		// Criando servidor
 		ServidorARQ server = new ServidorARQ();
@@ -17,7 +24,7 @@ public class ServidorARQ{
 		
 	}
 
-	public void waitForClient() {
+	public void waitForClient(String nomeArqu) {
 		// Checa se a transferencia foi completada com sucesso
 		OutputStream socketOut = null;
 		ServerSocket servsock = null;
@@ -37,7 +44,7 @@ public class ServidorARQ{
 			int bytesRead;
 
 			// Criando arquivo que sera transferido pelo servidor
-			File file = new File("c:\\temp\\teste.zip");
+			File file = new File("c:\\temp\\teste.zip"+nomeArqu);
 			fileIn = new FileInputStream(file);
 			System.out.println("Lendo arquivo...");
 			
